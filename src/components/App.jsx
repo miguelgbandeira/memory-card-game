@@ -32,7 +32,8 @@ function App() {
           const data = await response.json();
           const firstAmiibo = data.amiibo[0];
           const { character, image } = firstAmiibo;
-          fetchedCharacters.push({ character, image });
+          const isClicked = false;
+          fetchedCharacters.push({ character, image, isClicked });
         })
       );
       if (isMounted) {
