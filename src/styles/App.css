@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-image: linear-gradient(to bottom, #4f6db8, #283e51);
 }
 
 .scoreboard {

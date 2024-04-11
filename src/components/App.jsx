@@ -91,7 +91,7 @@ function App() {
         </div>
         <p className="instructions">Click on each character only once!</p>
         <div className="gameboard">
-          {characters.slice(0, 4).map((character) => (
+          {characters.map((character) => (
             <Card
               className="cards"
               key={character.id}
