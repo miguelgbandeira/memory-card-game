@@ -7,6 +7,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [resetTrigger, setResetTrigger] = useState(false);
 
   useEffect(() => {
     const charactersNames = [
@@ -49,7 +50,7 @@ function App() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [resetTrigger]);
 
   function shuffleArray(array) {
     // Using Fisher-Yates shuffle algorithm
@@ -77,7 +78,8 @@ function App() {
 
   function resetGame() {
     setCharacters([]);
-    setCurrentScore([]);
+    setCurrentScore(0);
+    setResetTrigger((prev) => !prev);
   }
 
   return (

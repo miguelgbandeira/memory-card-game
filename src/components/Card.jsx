@@ -14,6 +14,7 @@ export default function Card({
     console.log(isClicked);
     if (isClicked) {
       updateBestScore();
+      alert(`Game over, you already picked ${character.character}`);
       resetGame();
     } else {
       setIsClicked(true);
