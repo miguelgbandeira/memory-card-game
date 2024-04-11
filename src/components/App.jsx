@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import "../styles/App.css";
+import Card from "../components/Card";
+import uniqid from "uniqid";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   useEffect(() => {
     const charactersNames = [
@@ -32,8 +36,8 @@ function App() {
           const data = await response.json();
           const firstAmiibo = data.amiibo[0];
           const { character, image } = firstAmiibo;
-          const isClicked = false;
-          fetchedCharacters.push({ character, image, isClicked });
+          const id = uniqid();
+          fetchedCharacters.push({ character, image, id });
         })
       );
       if (isMounted) {
@@ -66,13 +70,13 @@ function App() {
     <>
       <div>
         <h1>Hello World</h1>
-        <button onClick={shuffleCharacters}>SHUFFLE</button>
         <div>
-          {characters.map((x, index) => (
-            <div className="card" key={index}>
-              <img src={x.image} alt={x.character} />
-              <p>{x.character}</p>
-            </div>
+          {characters.map((character) => (
+            <Card
+              key={character.id}
+              character={character}
+              handleClick={shuffleCharacters}
+            ></Card>
           ))}
         </div>
       </div>
