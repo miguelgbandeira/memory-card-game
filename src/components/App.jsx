@@ -64,12 +64,17 @@ function App() {
   const shuffleCharacters = () => {
     const shuffledArray = shuffleArray([...characters]);
     setCharacters(shuffledArray);
+    setCurrentScore((prevScore) => {
+      return prevScore + 1;
+    });
   };
 
   return (
     <>
       <div>
         <h1>Hello World</h1>
+        <div>curr:{currentScore}</div>
+        <div>best:{bestScore}</div>
         <div>
           {characters.map((character) => (
             <Card
