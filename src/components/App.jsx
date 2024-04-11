@@ -88,7 +88,7 @@ function App() {
           <div>Best Score: {bestScore}</div>
         </div>
         <div className="gameboard">
-          {characters.map((character) => (
+          {characters.slice(0, 4).map((character) => (
             <Card
               className="cards"
               key={character.id}
