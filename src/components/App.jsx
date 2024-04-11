@@ -64,10 +64,11 @@ function App() {
   const shuffleCharacters = () => {
     const shuffledArray = shuffleArray([...characters]);
     setCharacters(shuffledArray);
-    setCurrentScore((prevScore) => {
-      return prevScore + 1;
-    });
   };
+
+  function increaseScore() {
+    setCurrentScore((prevScore) => prevScore + 1);
+  }
 
   return (
     <>
@@ -81,6 +82,7 @@ function App() {
               key={character.id}
               character={character}
               handleClick={shuffleCharacters}
+              increaseScore={increaseScore}
             ></Card>
           ))}
         </div>

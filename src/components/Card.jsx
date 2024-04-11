@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Card({ character, handleClick }) {
+export default function Card({ character, handleClick, increaseScore }) {
   const [isClicked, setIsClicked] = useState(false);
 
   function handleCardClick() {
@@ -11,6 +11,7 @@ export default function Card({ character, handleClick }) {
       console.log("This: " + isClicked);
       setIsClicked(true);
       handleClick();
+      increaseScore();
     }
   }
 
