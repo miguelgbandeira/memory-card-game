@@ -3,23 +3,23 @@ import "../styles/App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const charactersNames = [
-    "mario",
-    "peach",
-    "luigi",
-    "toad",
-    "bowser",
-    "yoshi",
-    "wario",
-    "donkey kong",
-    "diddy kong",
-    "waluigi",
-    "daisy",
-    "bowser jr.",
-    "boo",
-  ];
 
   useEffect(() => {
+    const charactersNames = [
+      "mario",
+      "peach",
+      "luigi",
+      "toad",
+      "bowser",
+      "yoshi",
+      "wario",
+      "donkey kong",
+      "diddy kong",
+      "waluigi",
+      "daisy",
+      "bowser jr.",
+      "boo",
+    ];
     let isMounted = true;
 
     const fetchCharacters = async () => {
@@ -47,15 +47,30 @@ function App() {
     };
   }, []);
 
+  function shuffleArray(array) {
+    // Using Fisher-Yates shuffle algorithm
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const shuffleCharacters = () => {
+    const shuffledArray = shuffleArray([...characters]);
+    setCharacters(shuffledArray);
+  };
+
   return (
     <>
       <div>
         <h1>Hello World</h1>
+        <button onClick={shuffleCharacters}>SHUFFLE</button>
         <div>
           {characters.map((x, index) => (
-            <div key={index}>
+            <div className="card" key={index}>
               <img src={x.image} alt={x.character} />
-              <p>Name: {x.character}</p>
+              <p>{x.character}</p>
             </div>
           ))}
         </div>
