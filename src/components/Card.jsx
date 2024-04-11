@@ -11,12 +11,13 @@ export default function Card({
   const [isClicked, setIsClicked] = useState(false);
 
   function handleCardClick() {
-    console.log(isClicked);
     if (isClicked) {
+      console.log("clickei " + isClicked);
       updateBestScore();
       alert(`Game over, you already picked ${character.character}`);
       resetGame();
     } else {
+      console.log("nao cliquei " + isClicked);
       setIsClicked(true);
       handleClick();
       increaseScore();

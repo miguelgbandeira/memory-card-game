@@ -89,6 +89,7 @@ function App() {
           <div>Current Score: {currentScore}</div>
           <div>Best Score: {bestScore}</div>
         </div>
+        <p className="instructions">Click on each character only once!</p>
         <div className="gameboard">
           {characters.slice(0, 4).map((character) => (
             <Card
