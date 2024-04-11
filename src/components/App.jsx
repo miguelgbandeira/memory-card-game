@@ -70,6 +70,12 @@ function App() {
     setCurrentScore((prevScore) => prevScore + 1);
   }
 
+  function updateBestScore() {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+  }
+
   return (
     <>
       <div>
@@ -83,6 +89,7 @@ function App() {
               character={character}
               handleClick={shuffleCharacters}
               increaseScore={increaseScore}
+              updateBestScore={updateBestScore}
             ></Card>
           ))}
         </div>
