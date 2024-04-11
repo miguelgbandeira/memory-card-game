@@ -14,7 +14,6 @@ function App() {
       "peach",
       "luigi",
       "toad",
-      "bowser",
       "yoshi",
       "wario",
       "donkey kong",
@@ -26,7 +25,7 @@ function App() {
     ];
     let isMounted = true;
 
-    const fetchCharacters = async () => {
+    async function fetchCharacters() {
       const fetchedCharacters = [];
       await Promise.all(
         charactersNames.map(async (characterName) => {
@@ -43,7 +42,7 @@ function App() {
       if (isMounted) {
         setCharacters(fetchedCharacters);
       }
-    };
+    }
 
     fetchCharacters();
 
@@ -61,10 +60,10 @@ function App() {
     return array;
   }
 
-  const shuffleCharacters = () => {
+  function shuffleCharacters() {
     const shuffledArray = shuffleArray([...characters]);
     setCharacters(shuffledArray);
-  };
+  }
 
   function increaseScore() {
     setCurrentScore((prevScore) => prevScore + 1);
@@ -76,20 +75,28 @@ function App() {
     }
   }
 
+  function resetGame() {
+    setCharacters([]);
+    setCurrentScore([]);
+  }
+
   return (
     <>
       <div>
-        <h1>Hello World</h1>
-        <div>curr:{currentScore}</div>
-        <div>best:{bestScore}</div>
-        <div>
+        <div className="scoreboard">
+          <div>Current Score: {currentScore}</div>
+          <div>Best Score: {bestScore}</div>
+        </div>
+        <div className="gameboard">
           {characters.map((character) => (
             <Card
+              className="cards"
               key={character.id}
               character={character}
               handleClick={shuffleCharacters}
               increaseScore={increaseScore}
               updateBestScore={updateBestScore}
+              resetGame={resetGame}
             ></Card>
           ))}
         </div>

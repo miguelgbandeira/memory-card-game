@@ -1,20 +1,21 @@
 import { useState } from "react";
+import "../styles/Card.css";
 
 export default function Card({
   character,
   handleClick,
   increaseScore,
   updateBestScore,
+  resetGame,
 }) {
   const [isClicked, setIsClicked] = useState(false);
 
   function handleCardClick() {
     console.log(isClicked);
     if (isClicked) {
-      console.log("you lost " + isClicked);
       updateBestScore();
+      resetGame();
     } else {
-      console.log("This: " + isClicked);
       setIsClicked(true);
       handleClick();
       increaseScore();
