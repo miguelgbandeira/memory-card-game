@@ -4,6 +4,7 @@
   padding: 2rem;
   text-align: center;
   background-image: linear-gradient(to bottom, #4f6db8, #283e51);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .scoreboard {
